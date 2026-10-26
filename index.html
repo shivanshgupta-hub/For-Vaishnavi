@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For Vaishnavi ❤️</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Fredoka', 'Nunito', sans-serif;
+      height: 100vh;
+      width: 100vw;
+      overflow: hidden;
+      position: relative;
+      background-color: #ffb6c1;
+    }
+
+    .bg-slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      opacity: 0;
+      transition: opacity 0.8s ease-in-out;
+      z-index: 1;
+    }
+
+    .bg-slide::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 182, 193, 0.48);
+      backdrop-filter: blur(2px);
+    }
+
+    .bg-slide.active {
+      opacity: 1;
+    }
+
+    .hearts-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 5;
+    }
+
+    .heart {
+      position: absolute;
+      font-size: 24px;
+      animation: floatUp 5s linear infinite;
+      opacity: 0.85;
+      user-select: none;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(105vh) scale(0.6) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-10vh) scale(1.4) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    .container {
+      position: relative;
+      z-index: 10;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      padding: 38px 26px;
+      border-radius: 30px;
+      box-shadow: 0 15px 35px rgba(216, 17, 89, 0.25);
+      border: 2px solid rgba(255, 255, 255, 0.65);
+      text-align: center;
+      width: 100%;
+      max-width: 440px;
+      transition: transform 0.4s ease, opacity 0.4s ease;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    h1 {
+      color: #d81159;
+      font-size: 1.5rem;
+      margin-bottom: 18px;
+      font-weight: 700;
+      line-height: 1.45;
+      text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+    }
+
+    .emoji-row {
+      font-size: 2.3rem;
+      margin: 14px 0;
+      animation: pulse 1.5s infinite ease-in-out;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.08); }
+    }
+
+    .btn-group {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    button {
+      background: linear-gradient(135deg, #ff4d6d, #d81159);
+      color: white;
+      border: none;
+      padding: 14px 20px;
+      font-size: 1.05rem;
+      font-family: 'Fredoka', sans-serif;
+      font-weight: 600;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 6px 18px rgba(216, 17, 89, 0.35);
+      transition: all 0.25s ease;
+    }
+
+    button:hover {
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 8px 22px rgba(216, 17, 89, 0.5);
+    }
+
+    button:active {
+      transform: translateY(1px);
+    }
+
+    .final-title {
+      font-size: 1.75rem !important;
+      color: #c70039 !important;
+      animation: heartBeat 1.2s infinite;
+      margin-top: 8px;
+    }
+
+    @keyframes heartBeat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background images -->
+  <div class="bg-slide active" id="bg1" style="background-image: url('bg1.png');"></div>
+  <div class="bg-slide" id="bg2" style="background-image: url('bg2.png');"></div>
+  <div class="bg-slide" id="bg3" style="background-image: url('bg3.png');"></div>
+  <div class="bg-slide" id="bg4" style="background-image: url('bg4.png');"></div>
+  <div class="bg-slide" id="bg5" style="background-image: url('bg5.png');"></div>
+  <div class="bg-slide" id="bg6" style="background-image: url('bg5.png');"></div>
+
+  <div class="hearts-bg" id="hearts-container"></div>
+  
+  <div class="container">
+
+    <!-- PAGE 1 -->
+    <div class="card" id="page1">
+      <div class="emoji-row">🥺👉👈💖</div>
+      <h1>Aur baby... kaise laga?<br>Mujhse pyaar karne lagi ho na? 🥺❤️</h1>
+      <div class="btn-group">
+        <button onclick="nextPage('page2', 'bg2')">Haan... thoda sa 😊</button>
+        <button onclick="nextPage('page2', 'bg2')">Bahut zyada 🥺❤️</button>
+      </div>
+    </div>
+
+    <!-- PAGE 2 -->
+    <div class="card hidden" id="page2">
+      <div class="emoji-row">👀✨💗</div>
+      <h1>Teri aankhein na...<br>jab dekhti hoon toh dil ruk jata hai.<br>Itni soft, itni beautiful... jaise poora jahaan unme sama gaya ho 🥺✨</h1>
+      <div class="btn-group">
+        <button onclick="nextPage('page3', 'bg3')">Awww... 🥺</button>
+        <button onclick="nextPage('page3', 'bg3')">Aur batao na 💕</button>
+      </div>
+    </div>
+
+    <!-- PAGE 3 -->
+    <div class="card hidden" id="page3">
+      <div class="emoji-row">🥰🌸💞</div>
+      <h1>Vaishnavi...<br>tumhare saath har din special lagta hai.<br>Tumhari hasi, tumhari baatein, tumhara hona...<br>sab kuch dil ko sukoon deta hai ❤️</h1>
+      <div class="btn-group">
+        <button onclick="nextPage('page4', 'bg4')">Sach mein? 🥺</button>
+        <button onclick="nextPage('page4', 'bg4')">Main bhi aisa feel karti hoon 💕</button>
+      </div>
+    </div>
+
+    <!-- PAGE 4 -->
+    <div class="card hidden" id="page4">
+      <div class="emoji-row">💌💖✨</div>
+      <h1>Main sirf itna kehna chahta hoon...<br>ki tum meri zindagi ka sabse khoobsurat hissa ban gayi ho.<br>Aur main chahta hoon ki yeh hamesha aise hi rahe 🥺❤️</h1>
+      <div class="btn-group">
+        <button onclick="nextPage('page5', 'bg5')">Main bhi chahti hoon 💕</button>
+        <button onclick="nextPage('page5', 'bg5')">Aur kya kehna hai? 🥺</button>
+      </div>
+    </div>
+
+    <!-- PAGE 5 - Proposal -->
+    <div class="card hidden" id="page5">
+      <div class="emoji-row">💍✨💖</div>
+      <h1>Toh Vaishnavi...</h1>
+      <h1 class="final-title">Will you be mine forever?<br>Meri girlfriend banogi? 🥺❤️</h1>
+      <div class="emoji-row">💋😘😍💑✨💖💞</div>
+      <div class="btn-group" style="margin-top: 18px;">
+        <button onclick="nextPage('page6', 'bg6')">Haan... forever 💍❤️</button>
+        <button onclick="nextPage('page6', 'bg6')">Haan meri jaan 🥰</button>
+      </div>
+    </div>
+
+    <!-- PAGE 6 - Final Message (Website ends here) -->
+    <div class="card hidden" id="page6">
+      <div class="emoji-row">💖🥰✨</div>
+      <h1 class="final-title">I Love You Vaishnavi ❤️</h1>
+      <h1>Itna... itna pyaar karta hoon tumse.<br>Forever meri raho 🥺♾️</h1>
+      <div class="emoji-row">💋😘😍💑✨💖💞💘</div>
+    </div>
+
+  </div>
+
+  <script>
+    function nextPage(nextPageId, nextBgId) {
+      document.querySelectorAll('.card').forEach(card => card.classList.add('hidden'));
+      document.getElementById(nextPageId).classList.remove('hidden');
+
+      document.querySelectorAll('.bg-slide').forEach(bg => bg.classList.remove('active'));
+      document.getElementById(nextBgId).classList.add('active');
+    }
+
+    function createFloatingEmojis() {
+      const container = document.getElementById('hearts-container');
+      const romanticEmojis = ['❤️', '💖', '💕', '💗', '💓', '💘', '💋', '😘', '✨', '🥰', '🌸', '💍'];
+
+      setInterval(() => {
+        const heart = document.createElement('div');
+        heart.innerHTML = romanticEmojis[Math.floor(Math.random() * romanticEmojis.length)];
+        heart.classList.add('heart');
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
+        heart.style.fontSize = (Math.random() * 16 + 18) + 'px';
+        container.appendChild(heart);
+
+        setTimeout(() => {
+          heart.remove();
+        }, 6000);
+      }, 250);
+    }
+
+    createFloatingEmojis();
+  </script>
+
+</body>
+</html>
